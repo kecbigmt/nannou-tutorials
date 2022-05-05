@@ -179,10 +179,11 @@ fn view(app: &App, model: &Model, frame: Frame) {
                     let shift_x = x as f32 * CELL_SIZE as f32;
                     let shift_y = -1.0 * y as f32 * CELL_SIZE as f32;
                     let current_rect = top_left_rect.shift_x(shift_x).shift_y(shift_y);
+                    let [r, g, b] = cell.rgb;
                     draw.rect()
                         .xy(current_rect.xy())
                         .wh(current_rect.wh())
-                        .rgb(cell.rgb[0], cell.rgb[1], cell.rgb[2]);
+                        .rgb(r, g, b);
                 },
             }
         }
