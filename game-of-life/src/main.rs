@@ -34,7 +34,7 @@ impl Field {
                // alive_ratioの確率で生きているセルを生成する
                let state = if rng.gen::<f32>() < alive_ratio { CellState::Alive } else { CellState::Dead };
                // セルの色は生成時に決定。同じ色が次世代でも受け継がれる
-               let cell = Cell::new(state, 0.1, 0.2, rng.gen_range(0.5..1.0));
+               let cell = Cell::new(state, 0.0, rng.gen_range(0.0..=0.4), rng.gen_range(0.6..=1.0));
                col.push(cell);
            }
            matrix.push(col);
