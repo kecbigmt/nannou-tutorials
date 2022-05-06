@@ -137,6 +137,7 @@ enum CellState {
     Dead,  // 死滅
 }
 
+// モデルなどの初期化を行うための関数
 fn model(app: &App) -> Model {
     let window_width = COL_N * CELL_SIZE;
     let window_height = ROW_N * CELL_SIZE;
@@ -154,6 +155,7 @@ fn model(app: &App) -> Model {
     model
 }
 
+// 秒間60回のupdateイベントごとに呼び出される関数。この中でモデルをアップデートする
 fn update(app: &App, model: &mut Model, _update: Update) {
     // 最後のフィールド更新時間から既定のインターバルが経過していれば次の状態に移行する
     if (app.time - model.last_iteration_time) >= ITERATION_INTERVAL_SECONDS {
@@ -162,6 +164,7 @@ fn update(app: &App, model: &mut Model, _update: Update) {
     }
 }
 
+// モデルの内容をもとにフレームを描画するための関数
 fn view(app: &App, model: &Model, frame: Frame) {
     let draw = app.draw();
     draw.background().rgb(0.11, 0.12, 0.13);
